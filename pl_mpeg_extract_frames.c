@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
 		
 		sprintf(png_name, "%04d.png", i);
 		printf("Writing %s\n", png_name);
-		stbi_write_png(png_name, w, h, 3, rgb_buffer, w * 3);
+		if ( i % 25 == 0 ) { stbi_write_png(png_name, w, h, 3, rgb_buffer, w * 3); }
 	}
 	
     return 0;
