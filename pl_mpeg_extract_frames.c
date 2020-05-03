@@ -68,10 +68,15 @@ int main(int argc, char *argv[]) {
 
 	for (int i = 0; frame = plm_decode_video(plm); i++) {
 		plm_frame_to_rgb(frame, rgb_buffer);
-		
-		sprintf(png_name, "%04d.png", i);
-		printf("Writing %s\n", png_name);
-		if ( i % 25 == 0 ) { stbi_write_png(png_name, w, h, 3, rgb_buffer, w * 3); }
+
+		// modified to output every 25th frame		
+		if ( i % 25 == 0 ) { 
+			stbi_write_png(png_name, w, h, 3, rgb_buffer, w * 3); 
+			sprintf(png_name, "%04d.png", i);
+			printf("\nWriting %s\n", png_name);
+		} else {
+			printf(".");
+		}
 	}
 	
     return 0;
